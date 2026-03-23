@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WIPL Production OS</title>
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="login-screen" class="screen active">
+      <div class="login-bg">
+        <div class="login-grid"></div>
+      </div>
+      <div class="login-box">
+        <div class="login-logo">
+          <div class="login-logo-mark">W</div>
+          <div>
+            <div class="logo-wipl">WIPL</div>
+            <span class="logo-os">Production OS</span>
+          </div>
+        </div>
+        <p class="login-sub">Manufacturing Intelligence Platform</p>
+        <div class="form-group">
+          <label>Role</label>
+          <select id="login-role">
+            <option value="">Select your role</option>
+            <option value="admin">Admin / Planner</option>
+            <option value="sales">Sales Team</option>
+            <option value="floor">Floor Team</option>
+            <option value="dispatch">Dispatch Team</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>PIN</label>
+          <input type="password" id="login-pin" placeholder="Enter PIN" maxlength="4" />
+        </div>
+        <button class="btn-primary full-width" onclick="handleLogin()">Enter System</button>
+        <p class="login-hint">Admin: 1234 | Sales: 2222 | Floor: 3333 | Dispatch: 4444</p>
+      </div>
+    </div>
+
+    <div id="main-app" class="screen">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+          <span class="logo-wipl">WIPL</span>
+          <span class="logo-os">OS</span>
+        </div>
+        <nav class="sidebar-nav" id="sidebar-nav"></nav>
+        <div class="sidebar-footer">
+          <div class="user-badge" id="user-badge"></div>
+          <button class="btn-logout" onclick="handleLogout()">Logout</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="top-bar">
+          <div class="page-title" id="page-title">Dashboard</div>
+          <div class="top-bar-right">
+            <div class="date-badge" id="date-badge"></div>
+            <div class="alert-bell" id="alert-bell" onclick="toggleAlerts()">
+              <span>🔔</span>
+              <span class="alert-count" id="alert-count">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="alerts-panel" class="alerts-panel hidden">
+          <div class="alerts-title">System Alerts</div>
+          <div id="alerts-list"></div>
+        </div>
+
+        <div id="content-area"></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="src/config.js"></script>
+  <script src="src/db.js"></script>
+  <script src="src/utils.js"></script>
+  <script src="src/modules/dashboard.js"></script>
+  <script src="src/modules/orders.js"></script>
+  <script src="src/modules/inventory.js"></script>
+  <script src="src/modules/production.js"></script>
+  <script src="src/modules/rawmaterial.js"></script>
+  <script src="src/modules/dispatch.js"></script>
+  <script src="src/modules/masterdata.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
